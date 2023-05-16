@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RootInspector</string>
+    <string name="app_name_with_version">RootInspector %1$s</string>
+    <string name="all_tests">All tests</string>
+    <string name="root_tests">Superuser tests</string>
+    <string name="root_tests_description">Check for root permissions on an Android device by testing for the presence of root-only files or functions</string>
+    <string name="safety_net_tests">SafetyNet tests</string>
+    <string name="safety_net_tests_description">Check if an Android device passes Google SafetyNet API integrity check</string>
+    <string name="xposed_tests">Xposed tests</string>
+    <string name="xposed_tests_description">Check if the Xposed framework is installed</string>
+    <string name="about_device">About device</string>
+    <string name="about_device_description">General information about device, status, kernel and Android version</string>
+    <string name="system_integrity">System integrity</string>
+    <string name="system_integrity_description">File system and Android integrity check</string>
+    <string name="created_by_ilyadreamix">Created by IlyaDreamix</string>
+    <string name="su_binaries">SU binaries</string>
+    <string name="su_command">SU command</string>
+    <string name="suspicious_values_in_path">Suspicious values in path</string>
+    <string name="root_management_apps">Root management apps</string>
+    <string name="not_detected">Not detected</string>
+    <string name="detected">Detected</string>
+    <string name="dangerous_apps">Dangerous apps</string>
+    <string name="test_keys">Test keys in the build tags</string>
+    <string name="rw_paths">Paths that should not be writeable</string>
+    <string name="summary">Summary</string>
+    <string name="summary_description">Summary information about tests</string>
+</resources>
