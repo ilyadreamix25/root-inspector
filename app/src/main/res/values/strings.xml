@@ -15,7 +15,7 @@
     <string name="system_integrity_description">File system and Android integrity check</string>
     <string name="created_by_ilyadreamix">Created by IlyaDreamix</string>
     <string name="su_binaries">SU binaries</string>
-    <string name="su_command">SU command</string>
+    <string name="su_command">SU shell command</string>
     <string name="suspicious_values_in_path">Suspicious values in path</string>
     <string name="root_management_apps">Root management apps</string>
     <string name="not_detected">Not detected</string>
@@ -25,4 +25,5 @@
     <string name="rw_paths">Paths that should not be writeable</string>
     <string name="summary">Summary</string>
     <string name="summary_description">Summary information about tests</string>
+    <string name="root_cloaking_apps">Root cloaking apps</string>
 </resources>

@@ -13,7 +13,8 @@ data class RootTestsResult(
     val suBinaries: DetectionResult,
     val suCommand: DetectionResult,
     val suspiciousValuesInPath: DetectionResult,
-    val rootManagementApps: DetectionResult
+    val rootManagementApps: DetectionResult,
+    val rootCloakingApps: DetectionResult
 )
 
 class RootTests(context: Context) : CommonTester(context) {
@@ -22,8 +23,24 @@ class RootTests(context: Context) : CommonTester(context) {
             suBinaries = detectSuBinaries(),
             suCommand = detectSuCommand() to listOf(),
             suspiciousValuesInPath = detectSuspiciousValuesInPath(),
-            rootManagementApps = detectRootManagementApps()
+            rootManagementApps = detectRootManagementApps(),
+            rootCloakingApps = detectRootCloakingApps()
         )
+
+    private fun detectRootCloakingApps(): DetectionResult {
+        val packagesTest = isAnyPackageOfListInstalled(RootCloakingApps)
+        val nativeTest = RootNative.loaded && !checkNativeReadAccess()
+
+        return (packagesTest.first && nativeTest) to packagesTest.second
+    }
+
+    private fun checkNativeReadAccess() =
+        try {
+            RootNative.setLogDebugMessages(true)
+            true
+        } catch (_: UnsatisfiedLinkError) {
+            false
+        }
 
     private fun detectSuBinaries() =
         doesAnyPathExist(SuBinariesPaths)

@@ -57,4 +57,11 @@ fun LazyListScope.rootTestsContent(testsResult: RootTestsResult) {
             result = testsResult.rootManagementApps
         )
     }
+
+    item(key = 4) {
+        CommonTestResultItem(
+            titleRes = R.string.root_cloaking_apps,
+            result = testsResult.rootCloakingApps
+        )
+    }
 }

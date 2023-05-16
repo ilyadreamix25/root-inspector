@@ -21,6 +21,18 @@ val RootManagementApps = listOf(
     "com.alephzain.framaroot"
 )
 
+val RootCloakingApps = listOf(
+    "com.devadvance.rootcloak",
+    "com.devadvance.rootcloakplus",
+    "de.robv.android.xposed.installer",
+    "com.saurik.substrate",
+    "com.zachspong.temprootremovejb",
+    "com.amphoras.hidemyroot",
+    "com.amphoras.hidemyrootadfree",
+    "com.formyhm.hiderootPremium",
+    "com.formyhm.hideroot"
+)
+
 val SuBinariesPaths = listOf(
     "/system/app/Superuser.apk",
     "/sbin/su",

@@ -21,13 +21,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
-import ua.ilyadreamix.rootinspector.main.MainNavRoutes
+import ua.ilyadreamix.rootinspector.RootInspectorNavRoutes
 
 data class FeatureInfo(
     @StringRes val titleRes: Int,
     @StringRes val descriptionRes: Int,
     val imageVector: ImageVector,
-    val navRoute: MainNavRoutes,
+    val navRoute: RootInspectorNavRoutes,
     val iconScale: Float? = null
 )
 

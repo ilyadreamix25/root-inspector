@@ -32,49 +32,49 @@ import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.spacedByWithFooter
 import ua.ilyadreamix.rootinspector.common.components.withNavBarInsets
 import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
-import ua.ilyadreamix.rootinspector.main.MainNavRoutes
+import ua.ilyadreamix.rootinspector.RootInspectorNavRoutes
 
 val AllFeaturesInfo = listOf(
     FeatureInfo(
         titleRes = R.string.root_tests,
         descriptionRes = R.string.root_tests_description,
         imageVector = Icons.Rounded.Tag,
-        navRoute = MainNavRoutes.RootTests
+        navRoute = RootInspectorNavRoutes.RootTests
     ),
     FeatureInfo(
         titleRes = R.string.safety_net_tests,
         descriptionRes = R.string.safety_net_tests_description,
         imageVector = Icons.Rounded.PlayArrow,
-        navRoute = MainNavRoutes.SafetyNetTests,
+        navRoute = RootInspectorNavRoutes.SafetyNetTests,
         iconScale = 1.1f
     ),
     FeatureInfo(
         titleRes = R.string.xposed_tests,
         descriptionRes = R.string.xposed_tests_description,
         imageVector = Icons.Rounded.Extension,
-        navRoute = MainNavRoutes.XposedTests,
+        navRoute = RootInspectorNavRoutes.XposedTests,
         iconScale = 0.8f
     ),
     FeatureInfo(
         titleRes = R.string.system_integrity,
         descriptionRes = R.string.system_integrity_description,
         imageVector = Icons.Rounded.Security,
-        navRoute = MainNavRoutes.SystemIntegrity,
+        navRoute = RootInspectorNavRoutes.SystemIntegrity,
         iconScale = 0.8f
     ),
     FeatureInfo(
         titleRes = R.string.about_device,
         descriptionRes = R.string.about_device_description,
         imageVector = Icons.Rounded.PhoneAndroid,
-        navRoute = MainNavRoutes.AboutDevice,
+        navRoute = RootInspectorNavRoutes.AboutDevice,
         iconScale = 0.8f
     ),
     FeatureInfo(
         titleRes = R.string.summary,
         descriptionRes = R.string.summary_description,
         imageVector = Icons.Rounded.Notes,
-        navRoute = MainNavRoutes.Summary,
-        iconScale = 0.8f
+        navRoute = RootInspectorNavRoutes.Summary,
+        iconScale = 0.85f
     )
 )
 

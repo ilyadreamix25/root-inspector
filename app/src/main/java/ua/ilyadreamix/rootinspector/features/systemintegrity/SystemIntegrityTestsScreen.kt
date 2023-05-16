@@ -30,21 +30,21 @@ fun SystemIntegrityTestsScreen(modifier: Modifier = Modifier) {
 }
 
 fun LazyListScope.systemIntegrityContent(testsResult: SystemIntegrityTestsResult) {
-    item(key = 4) {
+    item(key = 5) {
         CommonTestResultItem(
             titleRes = R.string.dangerous_apps,
             result = testsResult.dangerousApps
         )
     }
 
-    item(key = 5) {
+    item(key = 6) {
         CommonTestResultItem(
             titleRes = R.string.test_keys,
             result = testsResult.testKeys
         )
     }
 
-    item(key = 6) {
+    item(key = 7) {
         CommonTestResultItem(
             titleRes = R.string.rw_paths,
             result = testsResult.rwPaths

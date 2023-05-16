@@ -1,4 +1,4 @@
-package ua.ilyadreamix.rootinspector.main
+package ua.ilyadreamix.rootinspector
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -17,18 +17,16 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.route
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(
+fun RootInspectorScreen(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    val currentRoute = MainNavRoutes.findByRoute(navController.route)
+    val currentRoute = RootInspectorNavRoutes.findByRoute(navController.route)
 
     Scaffold(
         topBar = {
@@ -55,7 +53,7 @@ fun MainScreen(
         contentWindowInsets = WindowInsets(0.dp),
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { innerPadding ->
-        MainNavHost(
+        RootInspectorNavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController
         )
