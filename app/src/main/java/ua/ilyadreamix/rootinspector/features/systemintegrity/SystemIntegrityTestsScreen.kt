@@ -10,7 +10,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.withNavBarInsets
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResultItem
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
