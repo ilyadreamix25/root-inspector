@@ -35,7 +35,7 @@ fun RootInspectorScreen(
                     Text(text = stringResource(id = currentRoute?.titleRes ?: R.string.all_tests))
                 },
                 navigationIcon = {
-                    if (currentRoute?.showBackNavButton == true)
+                    if (currentRoute?.showBackNavButton == true) {
                         IconButton(
                             onClick = {
                                 navController.popBackStack()
@@ -46,6 +46,7 @@ fun RootInspectorScreen(
                                 contentDescription = null
                             )
                         }
+                    }
                 },
                 scrollBehavior = scrollBehavior
             )

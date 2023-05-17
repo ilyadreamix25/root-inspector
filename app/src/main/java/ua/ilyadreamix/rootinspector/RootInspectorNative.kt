@@ -1,7 +1,6 @@
 package ua.ilyadreamix.rootinspector
 
 object RootInspectorNative {
-    @JvmStatic
     var loaded = false
         private set
 

@@ -14,19 +14,26 @@ import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.withNavBarInsets
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResultItem
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
+import ua.ilyadreamix.rootinspector.common.features.testResultExportButtons
+import ua.ilyadreamix.rootinspector.common.features.toClipboardVersion
+import ua.ilyadreamix.rootinspector.common.features.toJsonVersion
 import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
 
 @Composable
 fun SystemIntegrityTestsScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     val feature = SystemIntegrityTests(context)
+
     val testsResult = remember { mutableStateOf(feature.checkSystemIntegrity()) }
+    val testsResultClipboardVersion = testsResult.value.toClipboardVersion()
+    val testsResultJsonVersion = testsResult.value.toJsonVersion()
 
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(CurrentDimen.allTests.itemOuterSpacing),
         contentPadding = CurrentDimen.core.screenPadding.withNavBarInsets
     ) {
+        testResultExportButtons(testsResultClipboardVersion, testsResultJsonVersion.second)
         systemIntegrityContent(testsResult = testsResult.value)
     }
 }

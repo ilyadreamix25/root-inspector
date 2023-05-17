@@ -3,6 +3,10 @@ package ua.ilyadreamix.rootinspector.common.features
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import org.json.JSONObject
+import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.features.root.PATH
 import java.io.File
 
@@ -45,5 +49,35 @@ open class CommonTester(private val context: Context) {
 data class CommonTestResult(
     val detected: Boolean,
     val values: List<String>,
-    @StringRes val titleRes: Int
+    @StringRes val titleRes: Int,
+    val jsonName: String
 )
+
+@Composable
+fun List<CommonTestResult>.toClipboardVersion() =
+    buildString {
+        this@toClipboardVersion.forEach { result ->
+            append(stringResource(result.titleRes))
+            append(": ")
+            append(if (result.detected) stringResource(R.string.detected) else stringResource(R.string.not_detected))
+            result.values.takeIf { it.isNotEmpty() }?.let { values ->
+                append(values.joinToString(","))
+            }
+            append("\n")
+        }
+    }
+
+@Composable
+fun List<CommonTestResult>.toJsonVersion(): Pair<JSONObject, String> {
+    val json = JSONObject()
+    forEach { result ->
+        val content = JSONObject(
+            mapOf(
+                "detected" to result.detected,
+                "values" to result.values
+            )
+        )
+        json.put(result.jsonName, content)
+    }
+    return json to json.toString()
+}

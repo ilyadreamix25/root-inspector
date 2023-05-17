@@ -26,4 +26,7 @@
     <string name="summary">Summary</string>
     <string name="summary_description">Summary information about tests</string>
     <string name="root_cloaking_apps">Root cloaking apps</string>
+    <string name="export_json">Export JSON</string>
+    <string name="export">Export text</string>
+    <string name="copied_to_clipboard">Copied to clipboard!</string>
 </resources>

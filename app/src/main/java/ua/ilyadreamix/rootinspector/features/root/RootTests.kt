@@ -23,27 +23,32 @@ class RootTests(context: Context) : CommonTester(context) {
             CommonTestResult(
                 suBinariesResult.first,
                 suBinariesResult.second,
-                R.string.su_binaries
+                R.string.su_binaries,
+                "suBinaries"
             ),
             CommonTestResult(
                 suCommandResult.first,
                 suCommandResult.second,
-                R.string.su_command
+                R.string.su_command,
+                "suShellCommand"
             ),
             CommonTestResult(
                 suspiciousValuesInPathResult.first,
                 suspiciousValuesInPathResult.second,
-                R.string.suspicious_values_in_path
+                R.string.suspicious_values_in_path,
+                "suspiciousValuesInPath"
             ),
             CommonTestResult(
                 rootManagementApps.first,
                 rootManagementApps.second,
-                R.string.root_management_apps
+                R.string.root_management_apps,
+                "rootManagementApps"
             ),
             CommonTestResult(
                 rootCloakingApps.first,
                 rootCloakingApps.second,
-                R.string.root_cloaking_apps
+                R.string.root_cloaking_apps,
+                "rootCloakingApps"
             )
         )
     }
