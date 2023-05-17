@@ -4,14 +4,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.withNavBarInsets
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResultItem
+import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
 import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
 
 @Composable
@@ -29,39 +30,14 @@ fun RootTestsScreen(modifier: Modifier = Modifier) {
     }
 }
 
-fun LazyListScope.rootTestsContent(testsResult: RootTestsResult) {
-    item(key = 0) {
+fun LazyListScope.rootTestsContent(testsResult: List<CommonTestResult>) {
+    items(
+        items = testsResult,
+        key = { it.titleRes }
+    ) { detection ->
         CommonTestResultItem(
-            titleRes = R.string.su_binaries,
-            result = testsResult.suBinaries
-        )
-    }
-
-    item(key = 1) {
-        CommonTestResultItem(
-            titleRes = R.string.su_command,
-            result = testsResult.suCommand
-        )
-    }
-
-    item(key = 2) {
-        CommonTestResultItem(
-            titleRes = R.string.suspicious_values_in_path,
-            result = testsResult.suspiciousValuesInPath
-        )
-    }
-
-    item(key = 3) {
-        CommonTestResultItem(
-            titleRes = R.string.root_management_apps,
-            result = testsResult.rootManagementApps
-        )
-    }
-
-    item(key = 4) {
-        CommonTestResultItem(
-            titleRes = R.string.root_cloaking_apps,
-            result = testsResult.rootCloakingApps
+            titleRes = detection.titleRes,
+            result = detection
         )
     }
 }

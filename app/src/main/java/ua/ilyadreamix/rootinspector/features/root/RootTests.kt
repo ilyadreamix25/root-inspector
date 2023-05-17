@@ -6,37 +6,58 @@
 package ua.ilyadreamix.rootinspector.features.root
 
 import android.content.Context
+import ua.ilyadreamix.rootinspector.R
+import ua.ilyadreamix.rootinspector.RootInspectorNative
 import ua.ilyadreamix.rootinspector.common.features.CommonTester
-import ua.ilyadreamix.rootinspector.common.features.DetectionResult
-
-data class RootTestsResult(
-    val suBinaries: DetectionResult,
-    val suCommand: DetectionResult,
-    val suspiciousValuesInPath: DetectionResult,
-    val rootManagementApps: DetectionResult,
-    val rootCloakingApps: DetectionResult
-)
+import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
 
 class RootTests(context: Context) : CommonTester(context) {
-    fun checkRootAccess() =
-        RootTestsResult(
-            suBinaries = detectSuBinaries(),
-            suCommand = detectSuCommand() to listOf(),
-            suspiciousValuesInPath = detectSuspiciousValuesInPath(),
-            rootManagementApps = detectRootManagementApps(),
-            rootCloakingApps = detectRootCloakingApps()
-        )
+    fun checkRootAccess(): List<CommonTestResult> {
+        val suBinariesResult = detectSuBinaries()
+        val suCommandResult = detectSuCommand() to listOf<String>()
+        val suspiciousValuesInPathResult = detectSuspiciousValuesInPath()
+        val rootManagementApps = detectRootManagementApps()
+        val rootCloakingApps = detectRootCloakingApps()
 
-    private fun detectRootCloakingApps(): DetectionResult {
+        return listOf(
+            CommonTestResult(
+                suBinariesResult.first,
+                suBinariesResult.second,
+                R.string.su_binaries
+            ),
+            CommonTestResult(
+                suCommandResult.first,
+                suCommandResult.second,
+                R.string.su_command
+            ),
+            CommonTestResult(
+                suspiciousValuesInPathResult.first,
+                suspiciousValuesInPathResult.second,
+                R.string.suspicious_values_in_path
+            ),
+            CommonTestResult(
+                rootManagementApps.first,
+                rootManagementApps.second,
+                R.string.root_management_apps
+            ),
+            CommonTestResult(
+                rootCloakingApps.first,
+                rootCloakingApps.second,
+                R.string.root_cloaking_apps
+            )
+        )
+    }
+
+    private fun detectRootCloakingApps(): Pair<Boolean, List<String>> {
         val packagesTest = isAnyPackageOfListInstalled(RootCloakingApps)
-        val nativeTest = RootNative.loaded && !checkNativeReadAccess()
+        val nativeTest = RootInspectorNative.loaded && !checkNativeReadAccess()
 
         return (packagesTest.first && nativeTest) to packagesTest.second
     }
 
     private fun checkNativeReadAccess() =
         try {
-            RootNative.setLogDebugMessages(true)
+            RootInspectorNative.setValue(0)
             true
         } catch (_: UnsatisfiedLinkError) {
             false

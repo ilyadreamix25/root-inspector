@@ -1,5 +1,5 @@
 /**
- * This code was found at github.com/scottyab/rootbeer and rewritten in Kotlin.
+ * Original code was found at github.com/scottyab/rootbeer.
  * I am not the author of the implementation of these methods
  */
 
@@ -10,14 +10,12 @@
 #include <cstdio>
 
 #define LOG_TAG   "RootInspector"
-#define LOGD(...) if (DEBUG) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__);
+#define LOGD(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__);
 
-static int DEBUG = 1;
+static int VALUE = 1;
 
-extern "C" void Java_ua_ilyadreamix_rootinspector_features_root_RootNative_setLogDebugMessages(JNIEnv* env, jobject thiz, jboolean debug)
+extern "C" void Java_ua_ilyadreamix_rootinspector_RootInspectorNative_setValue(JNIEnv* env, jobject thiz, jint value)
 {
-    if (debug) DEBUG = 1;
-    else DEBUG = 0;
-
-    LOGD("Set DEBUG variable (%d)", DEBUG)
+    VALUE = value;
+    LOGD("Set native value (%d)", VALUE)
 }

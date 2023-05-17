@@ -7,32 +7,44 @@ package ua.ilyadreamix.rootinspector.features.systemintegrity
 
 import android.content.Context
 import android.os.Build
+import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.features.CommonTester
-import ua.ilyadreamix.rootinspector.common.features.DetectionResult
+import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
 import java.io.IOException
 import java.util.Scanner
 
-data class SystemIntegrityTestsResult(
-    val dangerousApps: DetectionResult,
-    val testKeys: DetectionResult,
-    val rwPaths: DetectionResult
-)
-
 class SystemIntegrityTests(context: Context) : CommonTester(context) {
-    fun checkSystemIntegrity() =
-        SystemIntegrityTestsResult(
-            dangerousApps = detectDangerousApps(),
-            testKeys = detectTestKeys(),
-            rwPaths = detectRwPaths()
+    fun checkSystemIntegrity(): List<CommonTestResult> {
+        val dangerousApps = detectDangerousApps()
+        val testKeys = detectTestKeys()
+        val rwPaths = detectRwPaths()
+
+        return listOf(
+            CommonTestResult(
+                dangerousApps.first,
+                dangerousApps.second,
+                R.string.dangerous_apps
+            ),
+            CommonTestResult(
+                testKeys.first,
+                testKeys.second,
+                R.string.test_keys
+            ),
+            CommonTestResult(
+                rwPaths.first,
+                rwPaths.second,
+                R.string.rw_paths
+            )
         )
+    }
 
     private fun detectDangerousApps() =
         isAnyPackageOfListInstalled(DangerousApps)
 
-    private fun detectTestKeys(): DetectionResult =
+    private fun detectTestKeys(): Pair<Boolean, List<String>> =
         (TEST_KEYS in Build.TAGS) to listOf()
 
-    private fun detectRwPaths(): DetectionResult {
+    private fun detectRwPaths(): Pair<Boolean, List<String>> {
         val rwPaths = mutableListOf<String>()
         val mountedLines = mountReader() ?: return false to listOf()
         val sdkVersion = Build.VERSION.SDK_INT

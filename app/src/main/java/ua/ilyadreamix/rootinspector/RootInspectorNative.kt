@@ -1,6 +1,6 @@
-package ua.ilyadreamix.rootinspector.features.root
+package ua.ilyadreamix.rootinspector
 
-object RootNative {
+object RootInspectorNative {
     @JvmStatic
     var loaded = false
         private set
@@ -14,5 +14,5 @@ object RootNative {
         }
     }
 
-    external fun setLogDebugMessages(value: Boolean)
+    external fun setValue(value: Int)
 }

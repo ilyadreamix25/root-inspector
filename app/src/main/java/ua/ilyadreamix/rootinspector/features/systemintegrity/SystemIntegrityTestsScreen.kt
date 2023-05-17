@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -12,6 +13,7 @@ import androidx.compose.ui.platform.LocalContext
 import ua.ilyadreamix.rootinspector.R
 import ua.ilyadreamix.rootinspector.common.components.withNavBarInsets
 import ua.ilyadreamix.rootinspector.common.features.CommonTestResultItem
+import ua.ilyadreamix.rootinspector.common.features.CommonTestResult
 import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
 
 @Composable
@@ -29,25 +31,14 @@ fun SystemIntegrityTestsScreen(modifier: Modifier = Modifier) {
     }
 }
 
-fun LazyListScope.systemIntegrityContent(testsResult: SystemIntegrityTestsResult) {
-    item(key = 5) {
+fun LazyListScope.systemIntegrityContent(testsResult: List<CommonTestResult>) {
+    items(
+        items = testsResult,
+        key = { it.titleRes }
+    ) { detection ->
         CommonTestResultItem(
-            titleRes = R.string.dangerous_apps,
-            result = testsResult.dangerousApps
-        )
-    }
-
-    item(key = 6) {
-        CommonTestResultItem(
-            titleRes = R.string.test_keys,
-            result = testsResult.testKeys
-        )
-    }
-
-    item(key = 7) {
-        CommonTestResultItem(
-            titleRes = R.string.rw_paths,
-            result = testsResult.rwPaths
+            titleRes = detection.titleRes,
+            result = detection
         )
     }
 }

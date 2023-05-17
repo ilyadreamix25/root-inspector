@@ -28,7 +28,7 @@ import ua.ilyadreamix.rootinspector.common.theme.CurrentDimen
 @Composable
 fun CommonTestResultItem(
     @StringRes titleRes: Int,
-    result: DetectionResult,
+    result: CommonTestResult,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -45,7 +45,7 @@ fun CommonTestResultItem(
                 horizontalArrangement = Arrangement.spacedBy(CurrentDimen.rootTests.itemInnerSpacing),
             ) {
                 Icon(
-                    imageVector = if (result.first) Icons.Rounded.Done else Icons.Rounded.Close,
+                    imageVector = if (result.detected) Icons.Rounded.Done else Icons.Rounded.Close,
                     contentDescription = null
                 )
                 Text(
@@ -57,11 +57,11 @@ fun CommonTestResultItem(
             }
 
             CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.bodyMedium) {
-                if (result.first && result.second.isNotEmpty()) {
-                    result.second.forEach { detection ->
+                if (result.detected && result.values.isNotEmpty()) {
+                    result.values.forEach { detection ->
                         Text(text = detection)
                     }
-                } else if (result.first) {
+                } else if (result.detected) {
                     Text(text = stringResource(id = R.string.detected))
                 } else {
                     Text(text = stringResource(id = R.string.not_detected))

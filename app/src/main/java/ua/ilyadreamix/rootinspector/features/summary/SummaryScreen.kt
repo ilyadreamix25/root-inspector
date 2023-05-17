@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material3.MaterialTheme
@@ -46,15 +47,12 @@ fun SummaryScreen(modifier: Modifier = Modifier) {
 }
 
 private fun LazyListScope.summaryScreenTitle(@StringRes titleRes: Int) {
-    item {
+    item(key = titleRes) {
         Text(
             text = stringResource(titleRes),
             modifier = Modifier
-                .fillMaxWidth()
-                .alpha(.75f),
-            style = MaterialTheme.typography.titleMedium.copy(
-                textAlign = TextAlign.Center
-            )
+                .padding(start = CurrentDimen.allTests.itemCorners)
+                .alpha(.75f)
         )
     }
 }

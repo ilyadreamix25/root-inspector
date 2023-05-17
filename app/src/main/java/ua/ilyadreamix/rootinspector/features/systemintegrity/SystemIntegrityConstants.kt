@@ -34,6 +34,7 @@ val DangerousApps = listOf(
 )
 
 val PathsThatShouldNotBeWriteable = listOf(
+    "/",
     "/system",
     "/system/bin",
     "/system/sbin",

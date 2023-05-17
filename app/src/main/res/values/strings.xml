@@ -3,7 +3,7 @@
     <string name="app_name">RootInspector</string>
     <string name="app_name_with_version">RootInspector %1$s</string>
     <string name="all_tests">All tests</string>
-    <string name="root_tests">Superuser tests</string>
+    <string name="root_tests">Root tests</string>
     <string name="root_tests_description">Check for root permissions on an Android device by testing for the presence of root-only files or functions</string>
     <string name="safety_net_tests">SafetyNet tests</string>
     <string name="safety_net_tests_description">Check if an Android device passes Google SafetyNet API integrity check</string>
